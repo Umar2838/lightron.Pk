@@ -188,7 +188,7 @@ function Cart() {
               setAddress={setAddress}
               setPincode={setPincode}
               setPhoneNumber={setPhoneNumber}
-              buyNow={}
+              buyNow={buyNow}
               
             />
           </div>
