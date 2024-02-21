@@ -5,7 +5,7 @@ import slide2 from "../../assets/slide2.png"
 import { Carousel } from 'antd';
 
 const contentStyle = {
-  height: "80vh",
+  height: "70vh",
   width:"100%",
   color: '#fff',
   lineHeight: '160px',
