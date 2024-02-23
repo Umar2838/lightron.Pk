@@ -51,7 +51,7 @@ function Allproducts() {
                       </div>
                       <div className="p-5 border-t-2">
                         <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>Lightron.PK</h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>{title}</h1>
+                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>{title.slice(0,20)}...</h1>
                         {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                         <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs.{price}PKR</p>
                         <div className=" flex justify-center">

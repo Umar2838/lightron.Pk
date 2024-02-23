@@ -1,6 +1,7 @@
 import React from 'react';
 import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.png";
+import slide3 from "../../assets/slide3.png"
 import { Carousel } from 'antd';
 
 function HeroSection() {
@@ -14,15 +15,15 @@ function HeroSection() {
   };
 
   // Media query for screens smaller than 768px
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    contentStyle.height = "25vh"; // Example: Changing height for smaller screens
+  if (window.matchMedia("(max-width: 384px)")) {
+    contentStyle.height = "20vh"; 
     contentStyle.lineHeight = '120px'; // Example: Changing lineHeight for smaller screens
   }
 
   return (
     <Carousel autoplay>
       <div>
-        <img src={slide1} style={contentStyle} alt="Slide 1" />
+        <img src={slide3} style={contentStyle} alt="Slide 1" />
       </div>
       <div>
         <img src={slide2} style={contentStyle} alt="Slide 2" />

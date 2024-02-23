@@ -36,7 +36,8 @@ function Login() {
         } catch (error) {
             console.log(error)
             setLoading(loading)
-            toast.error(error.message, {
+            toast.error(
+                error.message, {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -45,7 +46,7 @@ function Login() {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                transition: Bounce,
+               
                 });
         }
 

@@ -39,19 +39,19 @@ function Cart() {
     console.log(temp)
   }, [cartItems])
 
-  const shipping = parseInt(200);
+  // const shipping = parseInt(200);
 
-  const grandTotal = shipping + totalAmout;
+  const grandTotal = totalAmout;
   // console.log(grandTotal)
 
   /**========================================================================
    *!                           Payment Intigration
    *========================================================================**/ 
 
-  const [name, setName] = useState("")
-  const [address, setAddress] = useState("");
-  const [pincode, setPincode] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
+  // const [name, setName] = useState("")
+  // const [address, setAddress] = useState("");
+  // const [pincode, setPincode] = useState("")
+  // const [phoneNumber, setPhoneNumber] = useState("")
 
   const buyNow = async () => {
     if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
@@ -67,75 +67,75 @@ function Cart() {
       })
     }
 
-    const addressInfo = {
-      name,
-      address,
-      pincode,
-      phoneNumber,
-      date: new Date().toLocaleString(
-        "en-US",
-        {
-          month: "short",
-          day: "2-digit",
-          year: "numeric",
-        }
-      )
-    }
+    // const addressInfo = {
+    //   name,
+    //   address,
+    //   pincode,
+    //   phoneNumber,
+    //   date: new Date().toLocaleString(
+    //     "en-US",
+    //     {
+    //       month: "short",
+    //       day: "2-digit",
+    //       year: "numeric",
+    //     }
+    //   )
+    // }
 
-    var options = {
-      key: "",
-      key_secret: "",
-      amount: parseInt(grandTotal * 100),
-      currency: "INR",
-      order_receipt: 'order_rcptid_' + name,
-      name: "E-Bharat",
-      description: "for testing purpose",
-      handler: function (response) {
-        console.log(response)
-        toast.success('Payment Successful')
+    // var options = {
+    //   key: "",
+    //   key_secret: "",
+    //   amount: parseInt(grandTotal * 100),
+    //   currency: "INR",
+    //   order_receipt: 'order_rcptid_' + name,
+    //   name: "E-Bharat",
+    //   description: "for testing purpose",
+    //   handler: function (response) {
+    //     console.log(response)
+    //     toast.success('Payment Successful')
 
-        const paymentId = response.razorpay_payment_id;
+        // const paymentId = response.razorpay_payment_id;
 
-        const orderInfo = {
-          cartItems,
-          addressInfo,
-          date: new Date().toLocaleString(
-            "en-US",
-            {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            }
-          ),
-          email: JSON.parse(localStorage.getItem("user")).user.email,
-          userid: JSON.parse(localStorage.getItem("user")).user.uid,
-          paymentId
-        }
+    //     const orderInfo = {
+    //       cartItems,
+    //       addressInfo,
+    //       date: new Date().toLocaleString(
+    //         "en-US",
+    //         {
+    //           month: "short",
+    //           day: "2-digit",
+    //           year: "numeric",
+    //         }
+    //       ),
+    //       email: JSON.parse(localStorage.getItem("user")).user.email,
+    //       userid: JSON.parse(localStorage.getItem("user")).user.uid,
+    //       paymentId
+    //     }
 
-        try {
+    //     try {
 
-          const orderRef = collection(fireDB, 'order');
-          addDoc(orderRef, orderInfo);
+    //       const orderRef = collection(fireDB, 'order');
+    //       addDoc(orderRef, orderInfo);
 
-        } catch (error) {
-          console.log(error)
-        }
-      },
+    //     } catch (error) {
+    //       console.log(error)
+    //     }
+    //   },
 
-      theme: {
-        color: "#3399cc"
-      }
-    };
+    //   theme: {
+    //     color: "#3399cc"
+    //   }
+    // };
 
-    var pay = new window.Razorpay(options);
-    pay.open();
-    console.log(pay)
+    // var pay = new window.Razorpay(options);
+    // pay.open();
+    // console.log(pay)
 
 
   }
   return (
     <Layout >
-      <div className="h-screen bg-gray-100 pt-5 mb-[60%] " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
+      <div className="h-screen bg-gray-100 pt-5 mb-[200%] " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
         <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
           <div className="rounded-lg md:w-2/3 ">
@@ -168,10 +168,10 @@ function Cart() {
               <p className="text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>Subtotal</p>
               <p className="text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs.{totalAmout}PKR</p>
             </div>
-            <div className="flex justify-between">
+            {/* <div className="flex justify-between">
               <p className="text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>Shipping</p>
               <p className="text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs.{shipping}PKR</p>
-            </div>
+            </div> */}
             <hr className="my-4" />
             <div className="flex justify-between mb-3">
               <p className="text-lg font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Total</p>
@@ -179,7 +179,7 @@ function Cart() {
                 <p className="mb-1 text-lg font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs.{grandTotal}PKR</p>
               </div>
             </div>
-            <Modal
+            {/* <Modal
               name={name}
               address={address}
               pincode={pincode}
@@ -190,7 +190,7 @@ function Cart() {
               setPhoneNumber={setPhoneNumber}
               buyNow={buyNow}
               
-            />
+            /> */}
           </div>
         </div>
       </div>

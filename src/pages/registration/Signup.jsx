@@ -5,23 +5,25 @@ import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, fireDB } from '../../fireabase/FirebaseConfig';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/Loader';
 
 function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+const navigate = useNavigate()
     const context = useContext(myContext);
     const { loading, setLoading } = context;
 
     const signup = async () => {
-        setLoading(true)
+       
         if (name === "" || email === "" || password === "") {
             return toast.error("All fields are required")
         }
-
+      
         try {
+            setLoading(true)
             const users = await createUserWithEmailAndPassword(auth, email, password);
 
             // console.log(users)
@@ -39,10 +41,9 @@ function Signup() {
             setEmail("");
             setPassword("");
             setLoading(false)
-            
+                 
         } catch (error) {
             console.log(error)
-            setLoading(false)
             toast.error(error.message, {
                 position: "top-right",
                 autoClose: 5000,
@@ -52,9 +53,10 @@ function Signup() {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                transition: Bounce,
                 });
-        }
+               
+            }
+       
     }
 
     return (

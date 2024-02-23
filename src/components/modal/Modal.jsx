@@ -12,9 +12,7 @@ function Modal({ name, address, pincode, phoneNumber, setName, setAddress, setPi
 
     };
 
-    const OrderonWhatssapp = () =>{
-
-    }
+ 
    
 
     return (
