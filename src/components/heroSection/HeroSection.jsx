@@ -15,8 +15,11 @@ function HeroSection() {
   };
 
   // Media query for screens smaller than 768px
-  if (window.matchMedia("(max-width: 384px)")) {
-    contentStyle.height = "20vh"; 
+  // This should be handled via CSS
+  // Instead, we'll adjust height directly here for demonstration purposes
+  const screenWidth = window.innerWidth;
+  if (screenWidth <= 768) {
+    contentStyle.height = "25vh"; 
     contentStyle.lineHeight = '120px'; // Example: Changing lineHeight for smaller screens
   }
 

@@ -2,22 +2,22 @@ import React, { Fragment, useContext, useState } from 'react'
 import myContext from '../../context/data/myContext';
 import { BsFillCloudSunFill } from 'react-icons/bs'
 import { FiSun } from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react'
 import { RxCross2 } from 'react-icons/rx'
 import { useSelector } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';
 function Navbar() {
   const context = useContext(myContext);
   const {mode, toggleMode} = context;
-
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
 
   const user = JSON.parse(localStorage.getItem('user'));
 
   const logout = () => {
     localStorage.clear('user');
-    window.location.href = '/login'
+    navigate('/login')
   }
 
   const cartItems = useSelector((state) => state.cart)
@@ -65,13 +65,13 @@ function Navbar() {
                     All Products
                   </Link>
 
-                  {user ? <div className="flow-root">
+                  {/* {user ? <div className="flow-root">
                     <Link to={'/order'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
                       Order
                     </Link>
-                  </div> : ""}
+                  </div> : ""} */}
 
-                  {user?.user?.email === "admin@gmail.com" ? <div className="flow-root">
+                  {user?.user?.email === "admin@gmail" ? <div className="flow-root">
                     <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
                       admin
                     </Link>
@@ -130,9 +130,7 @@ Lightron.PK illuminate your home with style and brilliance.        </p>
                   <Link to={'/allproducts'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     All Products
                   </Link>
-                 {user ?  <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
-                    Order
-                  </Link> :   <Link to={'/signup'}  className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                 {!user &&  <Link to={'/signup'}  className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                       Signup
                     </Link>}
 

@@ -54,7 +54,7 @@ function ProductCard() {
                       <button
                         type="button"
                         onClick={() => addCart(item)}
-                        className=" focus:outline-none  text-white bg-[#fbae38] hover:bg-[f9a72c]  focus:ring-4 focus:ring-[ff0000] font-medium rounded-lg w-full text-sm py-2 ">Order on Whattsapp</button>
+                        className=" focus:outline-none  text-white bg-[#fbae38] hover:bg-[f9a72c]  focus:ring-4 focus:ring-[ff0000] font-medium rounded-lg w-full text-sm py-2 ">Order on WhattsApp</button>
                     </div>
                   </div>
                 </div>

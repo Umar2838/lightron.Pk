@@ -36,13 +36,13 @@ function DashboardTab() {
                                     <div className="flex gap-2 items-center">
                                         <MdOutlineProductionQuantityLimits />Products</div> </button>
                             </Tab>
-                            <Tab>
+                            {/* <Tab>
                                 <button type="button" className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center ">
                                     <div className="flex gap-2 items-center">
                                         <AiFillShopping /> Order
                                     </div>
                                 </button>
-                            </Tab>
+                            </Tab> */}
                             <Tab>
                                 <button type="button" className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center ">
                                     <div className="flex gap-2 items-center">
@@ -143,10 +143,9 @@ function DashboardTab() {
                                 </div>
                             </div>
                         </TabPanel>
-
-                        <TabPanel>
+ {/* <TabPanel> */}
                             {/* <Order order={order} setOrder={setOrder} setLoading={setLoading} /> */}
-                            <div className="relative overflow-x-auto mb-16">
+                            {/* <div className="relative overflow-x-auto mb-16">
                                 <h1 className=' text-center mb-5 text-3xl font-semibold underline' style={{ color: mode === 'dark' ? 'white' : '' }}>Order Details</h1>
 
                                 {order.map((allorder,index)=>{
@@ -236,9 +235,9 @@ function DashboardTab() {
                                     })}
                                 </table>)
                                 })}
-                            </div>
-                        </TabPanel>
-
+                            </div> */}
+                        {/* </TabPanel> */}
+ 
                         <TabPanel>
                             {/* <User addressInfo={addressInfo} setAddressInfo={setAddressInfo} setLoading={setLoading} /> */}
                             <div className="relative overflow-x-auto mb-10">
