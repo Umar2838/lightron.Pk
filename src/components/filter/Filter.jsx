@@ -23,7 +23,7 @@ function Filter() {
                             type="text"
                             name="searchkey"
                             value={searchkey}
-                            onChange={(e) => setSearchkey(e.target.value)}
+                            onChange={(e) => setSearchkey(e.target.value.toLowerCase())}
                             id="searchkey"
                             placeholder="Search here"
                             className="px-8 py-3 w-full rounded-md bg-violet-0 border-transparent outline-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }} />

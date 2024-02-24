@@ -36,7 +36,8 @@ function ProductCard() {
         </div>
 
         <div className="flex flex-wrap -m-4">
-          {product.filter((obj) => obj.title.toLowerCase().includes(searchkey)).slice(0, 8).map((item, index) => {
+          {product.filter((obj) => obj.title.toLowerCase().trim(" ").includes(searchkey))
+          .slice(0, 8).map((item, index) => {
             const { title, price, imageUrl, id } = item;
             return (
               <div key={index} className="p-4 md:w-1/4 drop-shadow-lg" style={{ minHeight: '400px' }}> {/* Set a fixed height */}

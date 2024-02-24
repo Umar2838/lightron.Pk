@@ -2,6 +2,9 @@ import React from 'react';
 import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.png";
 import slide3 from "../../assets/slide3.png"
+import slide4 from "../../assets/slide4.png";
+import slide5 from "../../assets/slide5.png";
+import slide6 from "../../assets/slide6.png"
 import { Carousel } from 'antd';
 
 function HeroSection() {
@@ -26,16 +29,19 @@ function HeroSection() {
   return (
     <Carousel autoplay>
       <div>
-        <img src={slide3} style={contentStyle} alt="Slide 1" />
+        <img src={slide2} style={contentStyle} alt="Slide 1" />
       </div>
       <div>
-        <img src={slide2} style={contentStyle} alt="Slide 2" />
+        <img src={slide3} style={contentStyle} alt="Slide 3" />
       </div>
       <div>
-        <img src={slide1} style={contentStyle} alt="Slide 3" />
+        <img src={slide5} style={contentStyle} alt="Slide 4" />
       </div>
       <div>
-        <img src={slide2} style={contentStyle} alt="Slide 4" />
+        <img src={slide6} style={contentStyle} alt="Slide 4" />
+      </div>
+      <div>
+        <img src={slide1} style={contentStyle} alt="Slide 4" />
       </div>
     </Carousel>
   );

@@ -5,16 +5,16 @@ import { toast } from 'react-toastify';
 import { fireDB } from '../../fireabase/FirebaseConfig';
 
 function myState(props) {
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState('dark');
 
     const toggleMode = () => {
-        if (mode === 'light') {
-            setMode('dark');
-            document.body.style.backgroundColor = "rgb(17, 24, 39)"
-        }
-        else {
+        if (mode === 'dark') {
             setMode('light');
             document.body.style.backgroundColor = "white"
+        }
+        else {
+            setMode('dark');
+            document.body.style.backgroundColor = "rgb(17, 24, 39)"
         }
     }
 
