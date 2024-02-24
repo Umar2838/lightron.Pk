@@ -71,11 +71,12 @@ function Navbar() {
                     </Link>
                   </div> : ""} */}
 
-                  {user?.user?.email === "admin@gmail" ? <div className="flow-root">
-                    <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                      admin
-                    </Link>
-                  </div> : ""}
+                 {user?.user?.email === 'admin@gmail.com' ?
+                 <div className='flow-root' >
+
+                   <Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                    Admin
+                  </Link></div>  : ""}
 
                 {user ? <div className="flow-root">
                     <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
