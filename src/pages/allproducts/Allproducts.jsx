@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect  } from 'react';
 import Filter from '../../components/filter/Filter';
 import ProductCard from '../../components/productCard/ProductCard';
 import Layout from '../../components/layout/Layout';
+import {Link,useNavigate} from "react-router-dom"
 import myContext from '../../context/data/myContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
@@ -9,7 +10,7 @@ import { addToCart } from '../../redux/cartSlice';
 function Allproducts() {
   const context = useContext(myContext);
   const { mode, product, searchkey, setSearchkey, filterType, setFilterType, filterPrice, setFilterPrice } = context;
-
+const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   console.log(cartItems);
@@ -40,11 +41,10 @@ function Allproducts() {
 
           <div className="flex flex-wrap -m-4">
             {product.filter((obj) => obj.title.toLowerCase().includes(searchkey))
-              .filter((obj) => obj.category.toLowerCase().includes(filterType))
-              .filter((obj) => obj.price.includes(filterPrice)).map((item, index) => {
+              .filter((obj) => obj.category.toLowerCase().trim(" ")).map((item, index) => {
                 const { title, price, description, imageUrl, id } = item;
                 return (
-                  <div onClick={() => window.location.href = `/productinfo/${id}`} key={index} className="p-4 md:w-1/4  drop-shadow-lg " >
+                  <div onClick={() => navigate(`/productinfo/${id}`)} key={index} className="p-4 md:w-1/4  drop-shadow-lg " >
                     <div className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
                       <div className="flex justify-center cursor-pointer" >
                         <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src={imageUrl} alt="blog" />

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState  } from 'react'
 import MyContext from './myContext'
+import { useNavigate } from 'react-router-dom';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { fireDB } from '../../fireabase/FirebaseConfig';
 
 function myState(props) {
     const [mode, setMode] = useState('dark');
-
     const toggleMode = () => {
         if (mode === 'dark') {
             setMode('light');
@@ -17,9 +17,9 @@ function myState(props) {
             document.body.style.backgroundColor = "rgb(17, 24, 39)"
         }
     }
-
+    
     const [loading, setLoading] = useState(false);
-
+    
     const [products, setProducts] = useState({
         title: null,
         price: null,
@@ -34,22 +34,23 @@ function myState(props) {
                 day: "2-digit",
                 year: "numeric",
             }
-        )
-    });
-
-    const addProduct = async () => {
-        if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
+            )
+        });
+        
+        const addProduct = async () => {
+            if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
             return toast.error("all fields are required")
         }
 
         setLoading(true)
-
+        
         try {
             const productRef = collection(fireDB, 'products');
+            const navigate = useNavigate()
             await addDoc(productRef, products)
             toast.success("Add product successfully");
             setTimeout(() => {
-                window.location.href = '/dashboard'
+                navigate('/dashboard')
             }, 800);
             getProductData();
             setLoading(false)
@@ -109,7 +110,7 @@ function myState(props) {
             await setDoc(doc(fireDB, 'products', products.id), products)
             toast.success("Product Updated successfully")
             setTimeout(() => {
-                window.location.href = '/dashboard'
+                navigate('/dashboard')
             }, 800);
             getProductData();
             setLoading(false)
