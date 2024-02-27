@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { fireDB } from '../../fireabase/FirebaseConfig';
+import Loader from '../../components/loader/Loader';
 
 function myState(props) {
     const [mode, setMode] = useState('dark');
@@ -102,16 +103,17 @@ function myState(props) {
     const edithandle = (item) => {
         setProducts(item)
     }
-
+    
     const updateProduct = async () => {
         setLoading(true)
+        
         try {
-
+         
             await setDoc(doc(fireDB, 'products', products.id), products)
             toast.success("Product Updated successfully")
-            setTimeout(() => {
+            
                 navigate('/dashboard')
-            }, 800);
+         
             getProductData();
             setLoading(false)
 

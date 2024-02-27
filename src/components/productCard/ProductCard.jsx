@@ -29,6 +29,12 @@ function ProductCard() {
 
   return (
     <section className="text-gray-600 body-font">
+      <div className="flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => addCart(item)}
+                        className=" focus:outline-none  text-white bg-[#fbae38] hover:bg-[f9a72c]  focus:ring-4 focus:ring-[ff0000] font-medium rounded-lg w-full text-sm py-2 ">Order on WhattsApp</button>
+                    </div>
       <div className="container px-5 py-8 md:py-16 mx-auto">
         <div className="lg:w-1/2 w-full mb-6 lg:mb-10">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>Our Latest Collection</h1>

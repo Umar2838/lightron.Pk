@@ -5,7 +5,7 @@ import Layout from '../../../components/layout/Layout';
 import { MdOutlineProductionQuantityLimits } from 'react-icons/md'
 import { FaUser, FaCartPlus } from 'react-icons/fa';
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function DashboardTab() {
     const context = useContext(myContext)
@@ -13,7 +13,7 @@ function DashboardTab() {
 
     // console.log(product)
     let [isOpen, setIsOpen] = useState(false)
-
+const navigate = useNavigate()
     function closeModal() {
         setIsOpen(false)
     }
@@ -23,7 +23,7 @@ function DashboardTab() {
     }
 
     const add = () => {
-        window.location.href = '/addproduct'
+    navigate('/addproduct')
     }
     return (
         <>
