@@ -10,8 +10,6 @@ function WallLights({ category }) {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart);
-    console.log(cartItems);
-
     const addCart = (product) => {
         dispatch(addToCart(product));
         toast.success('Added to cart');
@@ -19,7 +17,7 @@ function WallLights({ category }) {
   // Use encodeURIComponent to encode the message for the URL
   const encodedMessage = encodeURIComponent(message);
   // Redirect to WhatsApp with the encoded message
-  window.location.href = `https://wa.me/+923444427404?text=${encodedMessage}`;
+  window.location.href=`https://wa.me/+923444427404?text=${encodedMessage}`;
     };
 
     useEffect(() => {

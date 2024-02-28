@@ -17,7 +17,12 @@ const navigate = useNavigate();
 
   const addCart = (product) => {
     dispatch(addToCart(product));
-    
+    toast.success('Added to cart');
+    const message = `Hi, I would like to purchase ${product.title} for Rs.${product.price} from your store. Here is the product image:${product.imageUrl}.`;
+  // Use encodeURIComponent to encode the message for the URL
+  const encodedMessage = encodeURIComponent(message);
+  // Redirect to WhatsApp with the encoded message
+  window.location.href=`https://wa.me/+923444427404?text=${encodedMessage}`;
     
   };
 

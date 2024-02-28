@@ -30,7 +30,7 @@
   
   .loader .text::before {
     color: var(--col2);
-    animation-delay: 1s;
+    animation-delay: 0.1s;
   }
   
   .loader .text::after {
@@ -81,4 +81,5 @@
       scale: .5;
       opacity: .85;
     }
+    
   }

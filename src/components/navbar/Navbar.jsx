@@ -7,6 +7,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { RxCross2 } from 'react-icons/rx'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import logo from "../../assets/logo.png"
 function Navbar() {
   const context = useContext(myContext);
   const {mode, toggleMode} = context;
@@ -120,7 +121,7 @@ Lightron.PK illuminate your home with style and brilliance.        </p>
               <div className="ml-4 flex lg:ml-0">
                 <Link to={'/'} className='flex'>
                   <div className="flex ">
-                    <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? '#fbae38' : '', }}>Lightron.pk</h1>
+                    <img className='w-full  mt-1 h-[170px]' src={logo}   />
                   </div>
                 </Link>
               </div>
