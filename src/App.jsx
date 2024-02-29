@@ -23,8 +23,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Allproducts from './pages/allproducts/Allproducts';
 function App() {
   return (
-    <MyState>
-      <Router>
+    <Router>
+        <MyState>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/allproducts" element={<Allproducts />} />
@@ -55,8 +55,8 @@ function App() {
           <Route path="/*" element={<NoPage />} />
         </Routes>
         <ToastContainer/>
-      </Router>
     </MyState>
+      </Router>
 
   )
 }

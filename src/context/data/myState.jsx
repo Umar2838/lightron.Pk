@@ -1,5 +1,5 @@
-import React, { useEffect, useState  } from 'react'
-import MyContext from './myContext'
+import React, { useEffect, useState } from 'react';
+import MyContext from './myContext';
 import { useNavigate } from 'react-router-dom';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
@@ -7,20 +7,21 @@ import { fireDB } from '../../fireabase/FirebaseConfig';
 import Loader from '../../components/loader/Loader';
 
 function myState(props) {
+    const navigate = useNavigate(); // Initialize useNavigate outside of the component body
+
     const [mode, setMode] = useState('dark');
     const toggleMode = () => {
         if (mode === 'dark') {
             setMode('light');
-            document.body.style.backgroundColor = "white"
-        }
-        else {
+            document.body.style.backgroundColor = "white";
+        } else {
             setMode('dark');
-            document.body.style.backgroundColor = "rgb(17, 24, 39)"
+            document.body.style.backgroundColor = "rgb(17, 24, 39)";
         }
-    }
-    
+    };
+
     const [loading, setLoading] = useState(false);
-    
+
     const [products, setProducts] = useState({
         title: null,
         price: null,
@@ -35,40 +36,35 @@ function myState(props) {
                 day: "2-digit",
                 year: "numeric",
             }
-            )
-        });
-        
-        const addProduct = async () => {
-            if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
-            return toast.error("all fields are required")
+        )
+    });
+
+    const addProduct = async () => {
+        if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
+            return toast.error("all fields are required");
         }
 
-        setLoading(true)
-        
+        setLoading(trunpe);
+
         try {
             const productRef = collection(fireDB, 'products');
-            const navigate = useNavigate()
-            await addDoc(productRef, products)
+            await addDoc(productRef, products);
             toast.success("Add product successfully");
             setTimeout(() => {
-                navigate('/dashboard')
+                navigate('/dashboard'); // Redirect to dashboard after adding product
             }, 800);
             getProductData();
-            setLoading(false)
+            setLoading(false);
         } catch (error) {
             console.log(error);
-            setLoading(false)
+            setLoading(false);
         }
-        // setProducts("")
-
-
-    }
+    };
 
     const [product, setProduct] = useState([]);
 
     const getProductData = async () => {
-
-        setLoading(true)
+        setLoading(true);
 
         try {
             const q = query(
@@ -82,17 +78,16 @@ function myState(props) {
                     productArray.push({ ...doc.data(), id: doc.id });
                 });
                 setProduct(productArray);
-                setLoading(false)
+                setLoading(false);
             });
 
             return () => data;
 
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-
-    }
+    };
 
     useEffect(() => {
         getProductData();
@@ -101,43 +96,39 @@ function myState(props) {
     // update product function
 
     const edithandle = (item) => {
-        setProducts(item)
-    }
-    
-    const updateProduct = async () => {
-        setLoading(true)
-        
-        try {
-         
-            await setDoc(doc(fireDB, 'products', products.id), products)
-            toast.success("Product Updated successfully")
-            
-                navigate('/dashboard')
-         
-            getProductData();
-            setLoading(false)
+        setProducts(item);
+    };
 
+    const updateProduct = async () => {
+        setLoading(true);
+
+        try {
+            await setDoc(doc(fireDB, 'products', products.id), products);
+            toast.success("Product Updated successfully");
+            navigate('/dashboard'); // Redirect to dashboard after updating product
+            getProductData();
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-    }
+    };
 
     // delete product
 
     const deleteProduct = async (item) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            await deleteDoc(doc(fireDB, 'products', item.id))
-            toast.success('Product Deleted successfully')
+            await deleteDoc(doc(fireDB, 'products', item.id));
+            toast.success('Product Deleted successfully');
+            navigate('/dashboard'); // Redirect to dashboard after deleting product
             getProductData();
-            setLoading(false)
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-    }
-
+    };
 
     const [order, setOrder] = useState([]);
 
